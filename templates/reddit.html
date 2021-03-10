@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ContentCentral-Reddit</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <header>
+        <div class="p-6">
+            <div class="divide-y-2 divide-blue-500">
+                <div class="my-4 px-4">
+                    <div class="grid grid-cols-15 divide-x-4 divide-blue-500">
+                        <div></div>
+
+                        <div class="text-4xl text-gray-500 align-baseline"><span
+                                class="m-1 font-bold">Content</span><span
+                                class="font-bold bg-gray-500 text-3xl text-white rounded-md p-1">CENTRAL</span></div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </header>
+
+    <body>
+
+        <div class="p-6">
+
+            <div class="m-4 p-4 text-3xl border-b-4 border-gray-500">
+                <p class="text-gray-500 font-bold">Top Reddit Feed</p>
+            </div>
+            
+            <div class='my-4 px-4'>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                    {% for item in data %}
+            
+                    {% if item.imgUrl == '' %}
+                    <div class="m-4 p-4 shadow-lg">
+            
+                        <a href='{{item.subredditUrl}}'>
+                            <p class="text-black text-xl font-bold mt-4">r/{{item.subreddit}}</p>
+            
+                        </a>
+                        <a href="{{item.url}}">
+                            <p class="my-2 text-black text-xl">{{item.title}}</p>
+                        </a>
+                        <p class="text-gray-300 text-xl">u/{{item.author}}</p>
+                    </div>
+                    {% else %}
+                    <div class="m-4 p-4 shadow-lg">
+                        <a href="{{item.imgUrl}}">
+                            <img src="{{item.imgUrl}}" />
+                        </a>
+                        <a href="{{item.subredditUrl}}">
+                            <p class="text-black text-xl font-bold mt-4">r/{{item.subreddit}}</p>
+                        </a>
+                        <a href="{{item.url}}">
+                            <p class="my-2 text-black text-xl">{{item.title}}</p>
+                        </a>
+                        <p class="text-gray-300 text-lg">u/{{item.author}}</p>
+            
+                    </div>
+            
+                    {% endif %}
+            
+                    {% endfor %}
+                </div>
+                {% for sec in sections %}
+                    <div class="m-2 p-4 text-3xl border-b-4 border-gray-500">
+                        <p class="text-gray-500 font-bold">r/{{sec}}</p>
+                    </div>
+                    <div class='my-4 px-4'>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                            {% for item in sections[sec] %}
+                    
+                                {% if item.imgUrl == '' %}
+                                    <div class="m-4 p-4 shadow-lg">
+                            
+                                        <a href='{{item.subredditUrl}}'>
+                                            <p class="text-black text-xl font-bold mt-4">r/{{item.subreddit}}</p>
+                            
+                                        </a>
+                                        <a href="{{item.url}}">
+                                            <p class="my-2 text-black text-xl">{{item.title}}</p>
+                                        </a>
+                                        <p class="text-gray-300 text-xl">u/{{item.author}}</p>
+                                    </div>
+                                {% else %}
+                                    <div class="m-4 p-4 shadow-lg">
+                                        <a href="{{item.imgUrl}}">
+                                            <img src="{{item.imgUrl}}" />
+                                        </a>
+                                        <a href="{{item.subredditUrl}}">
+                                            <p class="text-black text-xl font-bold mt-4">r/{{item.subreddit}}</p>
+                                        </a>
+                                        <a href="{{item.url}}">
+                                            <p class="my-2 text-black text-xl">{{item.title}}</p>
+                                        </a>
+                                        <p class="text-gray-300 text-lg">u/{{item.author}}</p>
+                            
+                                    </div>
+                        
+                                {% endif %}
+                    
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endfor %}
+            
+            
+
+            </div>
+
+
+
+
+
+        </div>
+
+
+    </body>
+</body>
+
+</html>
+
+
