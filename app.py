@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 from oop import Forbes, googleScraper, indianExpressScraper, indiaToday, bbcNews, nytimes, cnbc, reddit
+
 app = Flask(__name__)
 
 @app.route('/')
@@ -67,7 +68,7 @@ def error(e) :
     return render_template('error.html')
 
 if __name__ == '__main__' :
-    app.run(debug=True)
+    app.run()
 
 
 
